@@ -1,0 +1,11 @@
+{
+  "java.project.sourcePaths": [
+    "lap_3",
+    "lap_1",
+    "lap_2/bai_1"
+  ],
+  "java.project.outputPath": "bin",
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar"
+  ]
+}
