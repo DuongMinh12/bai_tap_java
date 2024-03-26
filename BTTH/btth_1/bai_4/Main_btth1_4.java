@@ -1,7 +1,4 @@
-import java.util.Scanner;
-
 public class Main_btth1_4 {
-    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         Complex cp1 = new Complex();
