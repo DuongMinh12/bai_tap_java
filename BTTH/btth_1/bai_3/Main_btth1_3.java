@@ -15,7 +15,7 @@ public class Main_btth1_3 {
             System.out.println("5. Tim sinh vien ho \"Le\".");
             System.out.println("6. Thoat chuong trinh.");
             int option = scanner.nextInt();
-            // scanner.nextLine();
+            scanner.nextLine();
             switch (option) {
                 case 1:
                     quanLySinhVien.NhapDSSV();
