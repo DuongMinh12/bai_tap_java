@@ -20,12 +20,12 @@ public class SinhVien implements Measurable {
         this.diemHoa = 0;
     }
 
-    public SinhVien(String maSv, String ten, double diemToan, double diemLy) {
+    public SinhVien(String maSv, String ten, double diemToan, double diemLy, double diemHoa) {
         this.maSv = maSv;
         this.name = ten;
         this.diemToan = diemToan;
         this.diemLy = diemLy;
-        this.diemHoa = 0;
+        this.diemHoa = diemHoa;
     }
 
     public void setmaSv(String maSv) {
@@ -45,7 +45,7 @@ public class SinhVien implements Measurable {
     }
 
     public void setdiemHoa(double diemHoa) {
-        this.diemLy = diemHoa;
+        this.diemHoa = diemHoa;
     }
 
     public String getmaSv() {
@@ -76,7 +76,7 @@ public class SinhVien implements Measurable {
     public void Nhap() {
         System.out.print("Nhap vao ma sinh vien: ");
         setmaSv(scanner.nextLine());
-        System.out.print("Nhap  vao ho ten sinh vien: ");
+        System.out.print("Nhap vao ho ten sinh vien: ");
         setName(scanner.nextLine());
         System.out.print("Nhap vao diem toan: ");
         setdiemToan(scanner.nextDouble());

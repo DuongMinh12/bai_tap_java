@@ -65,7 +65,7 @@ public class NhanVien implements Measurable {
     public void Nhap() {
         System.out.print("Nhap vao ma nhan vien: ");
         setMaNV(scanner.nextLine());
-        System.out.print("Nhap  vao ho ten nhan vien: ");
+        System.out.print("Nhap vao ho ten nhan vien: ");
         setName(scanner.nextLine());
         System.out.print("Nhap vao so gio lam: ");
         setGioLam(scanner.nextDouble());
