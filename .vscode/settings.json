@@ -1,13 +1,6 @@
 {
   "java.project.sourcePaths": [
-    "lap_3",
-    "lap_2/bai_1",
-    "lap_1",
-    // "BTTH/btth_1/bai_1",
-    // "BTTH/btth_1/bai_4",
-    // "BTTH/btth_1/bai_3",
-    // "BTTH/btth_1/bai_2",
-    "BTTH/btth_1/bai_5"
+    "BTTH/btth_1/bai_6"
   ],
   "java.project.outputPath": "bin",
   "java.project.referencedLibraries": [
