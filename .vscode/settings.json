@@ -1,6 +1,7 @@
 {
   "java.project.sourcePaths": [
-    "lap_4/bai_3"
+    "lap_4/bai_3",
+    "lap_4/bai_4"
   ],
   "java.project.outputPath": "bin",
   "java.project.referencedLibraries": [
