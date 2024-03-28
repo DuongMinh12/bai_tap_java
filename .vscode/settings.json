@@ -1,5 +1,10 @@
 {
-  "java.project.sourcePaths": ["BTTH/btth_1/bai_6", "BTTH/btth_1/bai_7"],
+  "java.project.sourcePaths": [
+    // "BTTH/btth_1/bai_6",
+    "BTTH/btth_1/bai_7"
+  ],
   "java.project.outputPath": "bin",
-  "java.project.referencedLibraries": ["lib/**/*.jar"]
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar"
+  ]
 }

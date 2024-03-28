@@ -45,7 +45,7 @@ abstract class NhanSu {
     public void Nhap() {
         System.out.print("Nhap vao ho ten nhan vien: ");
         setName(scanner.nextLine());
-        System.out.print("Nhap vao ngay sinh (theo dinh dang dd/mm/yy): ");
+        System.out.print("Nhap vao ngay sinh (theo dinh dang dd/mm/yyyy): ");
         setNgaySinh(scanner.nextLine());
         System.out.print("Nhap vao he so luong: ");
         setHesoLuong(scanner.nextDouble());
@@ -53,7 +53,7 @@ abstract class NhanSu {
     };
 
     public void Xuat() {
-        System.out.println("Ho ten: A" + getName());
+        System.out.println("Ho ten: " + getName());
         System.out.println("Ngay sinh: " + getNgaySinh());
         System.out.println("He so luong" + getName());
     }

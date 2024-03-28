@@ -1,3 +1,3 @@
-public interface Measurable {
+public interface Measurable<T> {
     double Valuate();
 }
