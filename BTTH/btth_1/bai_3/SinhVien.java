@@ -42,7 +42,11 @@ public class SinhVien {
     }
 
     public void setDiemTB(double diemTB) {
-        this.diemTB = diemTB;
+        if (diemTB >= 0 && diemTB <= 10) {
+            this.diemTB = diemTB;
+        } else {
+            System.out.println("Diem trung binh khong hop le.");
+        }
     }
 
     public int getID() {

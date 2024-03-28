@@ -37,15 +37,27 @@ public class SinhVien implements Measurable {
     }
 
     public void setdiemToan(double diemToan) {
-        this.diemToan = diemToan;
+        if (diemToan >= 0 && diemToan <= 10) {
+            this.diemToan = diemToan;
+        } else {
+            System.out.println("Diem toan khong hop le.");
+        }
     }
 
     public void setdiemLy(double diemLy) {
-        this.diemLy = diemLy;
+        if (diemLy >= 0 && diemLy <= 10) {
+            this.diemLy = diemLy;
+        } else {
+            System.out.println("Diem ly khong hop le.");
+        }
     }
 
     public void setdiemHoa(double diemHoa) {
-        this.diemHoa = diemHoa;
+        if (diemHoa >= 0 && diemHoa <= 10) {
+            this.diemHoa = diemHoa;
+        } else {
+            System.out.println("Diem hoa khong hop le.");
+        }
     }
 
     public String getmaSv() {
