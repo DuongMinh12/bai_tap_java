@@ -15,7 +15,7 @@ public class ThreadRead extends Thread {
     public void run() {
         try {
             Thread.sleep(1000);
-            System.out.println("Danh sách số nguyên tố trong file:");
+            System.out.println("Danh sach so nguyen to:");
 
             java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader(fileName));
             String line;
