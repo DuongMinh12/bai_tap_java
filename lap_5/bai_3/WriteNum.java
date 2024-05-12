@@ -5,19 +5,27 @@ import java.util.ArrayList;
 public class WriteNum extends Thread {
     private final int min;
     private final int max;
-    private final Object lock;
-    private final ArrayList<Integer> primeNumbers;
-    // private boolean continute = true;
 
-    public WriteNum(int min, int max, Object lock, ArrayList<Integer> primeNumbers) {
+    private ArrayList<Integer> primes;
+
+    public WriteNum(int min, int max, ArrayList<Integer> primes) {
         this.min = min;
         this.max = max;
-        this.lock = lock;
-        this.primeNumbers = primeNumbers;
-
+        this.primes = primes;
     }
 
-    public boolean KTSoNT(int num) {
+    @Override
+    public void run() {
+        for (int num = min; num <= max; num++) {
+            if (isPrime(num)) {
+                synchronized (primes) {
+                    primes.add(num);
+                }
+            }
+        }
+    }
+
+    private boolean isPrime(int num) {
         if (num <= 1) {
             return false;
         }
@@ -27,28 +35,5 @@ public class WriteNum extends Thread {
             }
         }
         return true;
-    }
-
-    public void wrileFile() {
-        synchronized (lock) {
-            for (int i = min; i <= max; i++) {
-                if (KTSoNT(i)) {
-                    primeNumbers.add(i);
-                    System.out.println("Prime number found: " + i);
-                    lock.notify(); // Thông báo cho luồng xuất số nguyên tố
-                    try {
-                        lock.wait(); // Chờ cho luồng xuất số nguyên tố hoàn thành
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            lock.notify(); // Thông báo cho luồng xuất số nguyên tố kết thúc
-        }
-    }
-
-    @Override
-    public void run() {
-        wrileFile();
     }
 }

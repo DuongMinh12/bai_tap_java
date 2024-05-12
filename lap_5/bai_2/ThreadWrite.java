@@ -2,56 +2,46 @@ package bai_2;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class ThreadWrite extends Thread {
     private final int min;
     private final int max;
-    private final String filename;
-    private final Object lock;
-    // private boolean continute = true;
+    private final String fileName;
 
-    public ThreadWrite(int min, int max, String filename, Object lock) {
+    public ThreadWrite(int min, int max, String fileName) {
         this.min = min;
         this.max = max;
-        this.filename = filename;
-        this.lock = lock;
-
+        this.fileName = fileName;
     }
 
-    // public boolean getContinute() {
-    // return this.continute;
-    // }
-
-    @Override
-    public void run() {
-        synchronized (lock) {
-            try {
-                BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true));
-                for (int i = min; i <= max; i++) {
-                    if (KTSoNT(i)) {
-                        writer.write(i + "\n");
-                        writer.flush();
-                    }
-                }
-                lock.notify();
-                // continute = false;
-                writer.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-    public boolean KTSoNT(int num) {
-        if (num <= 1) {
+    private boolean isPrime(int n) {
+        if (n <= 1) {
             return false;
         }
-        for (int i = 2; i <= Math.sqrt(num); i++) {
-            if (num % i == 0) {
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
                 return false;
             }
         }
         return true;
+    }
+
+    public void run() {
+        try {
+            FileWriter fileWriter = new FileWriter(fileName);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            for (int i = min; i <= max; i++) {
+                if (isPrime(i)) {
+                    bufferedWriter.write(i + "\n");
+                }
+            }
+
+            bufferedWriter.close();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

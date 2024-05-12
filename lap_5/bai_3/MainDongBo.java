@@ -4,13 +4,12 @@ import java.util.ArrayList;
 
 public class MainDongBo {
     public static void main(String[] args) {
-        ArrayList<Integer> primeNumbers = new ArrayList<>();
-        Object lock = new Object();
+        ArrayList<Integer> primes = new ArrayList<>();
 
-        WriteNum finderThread = new WriteNum(1000, 10000, lock, primeNumbers);
-        ReadNum printerThread = new ReadNum(primeNumbers, lock);
+        WriteNum writeNum = new WriteNum(1000, 10000, primes);
+        ReadNum readNum = new ReadNum(primes);
 
-        finderThread.start();
-        printerThread.start();
+        writeNum.start();
+        readNum.start();
     }
 }

@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-public class SoNT extends Thread {
+public class Prime extends Thread {
     private int min;
     private int max;
     private ArrayList<Integer> listSoNT = new ArrayList<>();
 
-    public SoNT(int min, int max) {
+    public Prime(int min, int max) {
         this.min = min;
         this.max = max;
     }
@@ -17,13 +17,13 @@ public class SoNT extends Thread {
     @Override
     public void run() {
         for (int i = min; i <= max; i++) {
-            if (KTSoNT(i)) {
+            if (isPrime(i)) {
                 listSoNT.add(i);
             }
         }
     }
 
-    public boolean KTSoNT(int num) {
+    public boolean isPrime(int num) {
         if (num <= 1) {
             return false;
         }
