@@ -4,9 +4,9 @@ public class MainDocGhi {
     public static void main(String[] args) {
         String fileName = "Number.txt";
         Object lock = new Object();
-        ThreadRead generator = new ThreadRead(1000, 10000, fileName, lock);
+        ThreadWrite generator = new ThreadWrite(1000, 10000, fileName, lock);
         // boolean continute = generator.getContinute();
-        ThreadWrite reader = new ThreadWrite(fileName, lock);
+        ThreadRead reader = new ThreadRead(fileName, lock);
 
         generator.start();
         reader.start();

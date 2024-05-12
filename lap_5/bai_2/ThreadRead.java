@@ -1,57 +1,52 @@
 package bai_2;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class ThreadRead extends Thread {
-    private final int min;
-    private final int max;
     private final String filename;
     private final Object lock;
-    // private boolean continute = true;
 
-    public ThreadRead(int min, int max, String filename, Object lock) {
-        this.min = min;
-        this.max = max;
+    public ThreadRead(String filename, Object lock) {
         this.filename = filename;
         this.lock = lock;
-
     }
 
-    // public boolean getContinute() {
-    // return this.continute;
+    // public ArrayList<Integer> DocFile() {
+    // ArrayList<Integer> listSoNT = new ArrayList<Integer>();
+    // try {
+    // BufferedReader reader = new BufferedReader(new FileReader(filename));
+
+    // String line;
+    // while ((line = reader.readLine()) != null) {
+    // listSoNT.add(Integer.parseInt(line));
+    // }
+    // reader.close();
+    // } catch (Exception e) {
+    // e.printStackTrace();
+    // }
+    // return listSoNT;
     // }
 
     @Override
     public void run() {
         synchronized (lock) {
-            try {
-                BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true));
-                for (int i = min; i <= max; i++) {
-                    if (KTSoNT(i)) {
-                        writer.write(i + "\n");
-                        writer.flush();
-                    }
+            try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+                String line;
+                ArrayList<Integer> primes = new ArrayList<>();
+                while ((line = reader.readLine()) != null) {
+                    primes.add(Integer.parseInt(line));
                 }
-                lock.notify();
-                // continute = false;
-                writer.close();
-            } catch (Exception e) {
+                System.out.println("Prime numbers read from file:");
+                for (int prime : primes) {
+                    System.out.println(prime);
+                }
+                lock.wait(); // Chờ cho luồng ghi kết thúc
+            } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
         }
-
-    }
-
-    public boolean KTSoNT(int num) {
-        if (num <= 1) {
-            return false;
-        }
-        for (int i = 2; i <= Math.sqrt(num); i++) {
-            if (num % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 }
